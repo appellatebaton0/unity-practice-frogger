@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     // Input & transformation
     InputAction moveAction; 
     Vector2 lastMoveDirection; // Used to detect when to move, since moveAction.WasPressedThisFrame won't detect the vector change.
-    
+
     // Animation & interpolation
     public bool moving; // Whether the player is currently in a movement animation.
     float moveTimer = 0.0f; // Used to detect how far along in the movement animation the player is.
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
                 transform.position = new Vector3(transform.position.x, MathF.Round(transform.position.y), transform.position.z);
 
-                print("Player's position is now " + transform.position);
+                // print("Player's position is now " + transform.position);
             }
         }
     }
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
     {
         moving = value;
 
-        // Update the animator depending on the move state (yay ternary functions!)
+        // Update the animator depending on the move state.
         if (animator && value)
         {
             animator.Play("PlayerMove", 0, 0.0f);
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    AnimationClip findAnimation (Animator animator, string name) 
+    static public AnimationClip findAnimation (Animator animator, string name) 
 {
         foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
         {
